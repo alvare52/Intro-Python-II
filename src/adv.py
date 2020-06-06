@@ -2,6 +2,7 @@ from room import Room
 from player import Player
 from item import Item
 import textwrap
+import sys
 # Declare all the rooms
 
 room = {
@@ -40,6 +41,7 @@ room["outside"].items = Item("Sword", "A big stupid sword")
 room["foyer"].items = Item("Gun", "A handsome blue gun")
 room["overlook"].items = Item("Soap", "An old bar of soap")
 room["narrow"].items = Item("Napkins", "A bucket of wet napkins")
+room["treasure"].items = Item("Treasure", "A diaper full of treasure")
 
 #
 # Main
@@ -69,6 +71,11 @@ while game_is_running:
     
     user_input = input("Enter a direction(n, e, s, w) (q to quit): ")
 
+    commands = [command for command in user_input.split()]
+    print(f"first command = {commands[0]}")
+    if len(commands) == 2:
+        print(f"second command = {commands[1]}")
+
     # If the user enters a cardinal direction, attempt to move to the room there.
     if user_input in ["n", "e", "s", "w"]:
         new_player.move(user_input)
@@ -79,5 +86,5 @@ while game_is_running:
         game_is_running = False
 
     # If the user enters "q", quit the game.
-    else:
-        print("That move isn't allowed")
+    # else:
+    #     print("That move isn't allowed")
