@@ -1,5 +1,6 @@
 from room import Room
 from player import Player
+from item import Item
 import textwrap
 # Declare all the rooms
 
@@ -50,18 +51,25 @@ print(new_player)
 game_is_running = True
 while game_is_running:
     print(new_player.current_location)
+    
     for line in textwrap.wrap(new_player.current_location.description, 40):
         print(line)
+    
+    if new_player.current_location.name == "Treasure Chamber":
+            print("*** You found the treasure! You win! ***")
+            break
+    
     user_input = input("Enter a direction(n, e, s, w) (q to quit): ")
+
+    # If the user enters a cardinal direction, attempt to move to the room there.
     if user_input in ["n", "e", "s", "w"]:
         new_player.move(user_input)
-        if new_player.current_location.name == "Treasure Chamber":
-            print("*** You found the treasure! You win! ***")
-            game_is_running = False
-    else:
+
+    # Print an error message if the movement isn't allowed.
+    elif user_input == "q":
         print("Thanks for playing")
         game_is_running = False
-# If the user enters a cardinal direction, attempt to move to the room there.
-# Print an error message if the movement isn't allowed.
-#
-# If the user enters "q", quit the game.
+
+    # If the user enters "q", quit the game.
+    else:
+        print("That move isn't allowed")
