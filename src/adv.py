@@ -35,6 +35,12 @@ room['narrow'].connections["w"] = room['foyer']
 room['narrow'].connections["n"] = room['treasure']
 room['treasure'].connections["s"] = room['narrow']
 
+# Items for each room
+room["outside"].items = Item("Sword", "A big stupid sword")
+room["foyer"].items = Item("Gun", "A handsome blue gun")
+room["overlook"].items = Item("Soap", "An old bar of soap")
+room["narrow"].items = Item("Napkins", "A bucket of wet napkins")
+
 #
 # Main
 #
@@ -55,6 +61,8 @@ while game_is_running:
     for line in textwrap.wrap(new_player.current_location.description, 40):
         print(line)
     
+    print(f"Contains: {new_player.current_location.items}")
+
     if new_player.current_location.name == "Treasure Chamber":
             print("*** You found the treasure! You win! ***")
             break
