@@ -14,3 +14,6 @@ class Player:
             self.current_location = self.current_location.connections[direction]
         else:
             print("You cannot move in that direction")
+    def take_item(self, item):
+        self.items.append(item)
+        

@@ -84,6 +84,9 @@ while game_is_running:
     elif user_input == "q":
         print("Thanks for playing")
         game_is_running = False
+    
+    elif user_input == "i":
+        print(f"Plaeyer Inventory: {new_player.items}")
 
     # If the user enters "q", quit the game.
     # else:
